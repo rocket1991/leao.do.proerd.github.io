@@ -8,18 +8,45 @@
 <body>
 
 <div class="header">
-	<h1>Minha primeira pagina</h1>
+	<h1>Rocket 1991</h1>
 </div>
 
-<div class="nav">
-	<h2>Biblioteca</h2>
-	<h2>Artigos</h2>
-	<h2>Resenhas</h2>	
+<div class="container" onclick="myFunction(this)">
+	<div class="bar1"></div>
+	<div class="bar2"></div>
+	<div class="bar3"></div>
 </div>
-<div class="footer">
+
+
+<div class="row">
+	<div class="menu col-3">
+		<ul>
+			<li>Biblioteca</li>
+			<li>Artigos</li>
+			<li>Resenhas</li>
+		</ul>
+	</div>
 	
+	<div class="col-9">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui aspernatur, quam, corrupti inventore, quidem necessitatibus quis deleniti amet architecto tenetur non eius autem itaque reprehenderit est omnis ad aliquam saepe!
+	</div>
+	<div class="col-9">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque alias praesentium dolorem cumque nemo laboriosam qui dolorum quisquam voluptatibus. Odio quaerat, quas! Itaque labore, enim sint quam minima. Dolores, facere.
+	</div>
+	<div class="col-9">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus itaque corporis perferendis qui, corrupti exercitationem est distinctio consequuntur accusantium cumque dolore, quidem pariatur obcaecati amet! Optio, tenetur perferendis perspiciatis labore!
+	</div>
+</div>
+
+<div class="footer">
+	2019
 </div>
 
 
 </body>
+<script type="text/javascript">
+	function myFunction(x) {
+	 	x.classList.toggle("change");
+	 }
+</script>
 </html>
