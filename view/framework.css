@@ -3,6 +3,25 @@
   box-sizing: border-box;
 }
 
+
+.parallax1, .parallax2 {
+  position: relative;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax1 {
+  background-image: url("20190412_150706.jpg");
+  min-height: 100px; 
+}
+
+.parallax2 {
+  background-image: url("20190311_094630.jpg");
+  min-height: 600px;
+}
+
 .row::after {
   content: "";
   clear: both;
@@ -44,7 +63,7 @@ html {
 }
 
 .aside {
-  background-color: #555;
+  background-color: #333;
   padding: 15px;
   color: #ffffff;
   text-align: center;
@@ -58,6 +77,9 @@ html {
   text-align: center;
   font-size: 12px;
   padding: 15px;
+  position: absolute;
+  bottom: 0px;
+
 }
 
 /* For mobile phones: */
@@ -66,6 +88,7 @@ html {
 [class*="col-"] {
   width: 100%;
 }
+
 
 
 
