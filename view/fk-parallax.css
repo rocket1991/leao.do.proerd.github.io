@@ -5,12 +5,10 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
-
 .parallax1 {
   background-image: url("bg1.jpg");
   min-height: 100px; 
 }
-
 .parallax2 {
   background-image: url("20190311_094630.jpg");
   min-height: 600px;
