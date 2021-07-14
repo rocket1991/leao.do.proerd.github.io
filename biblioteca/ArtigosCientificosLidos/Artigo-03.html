@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<h1>AGENTE DE APRENDIZADO POR REFORÇO TABULAR PARA NEGOCIAÇÃO DE AÇÕES</h1>
+
+
+<p>Dissertação apresentada ao Programa de Pós-Graduação em Ciência da Computação do Instituto de Ciências Exatas da Universidade Federal de Minas Gerais como requisito parcial para a obtenção do grau de Mestre em Ciência da Computação.</p>
+
+<h4>RENATO ARANTES DE OLIVEIRA</h4>
+
+<p>Fevereiro de 2020</p>
+
+
+<h2>Resumo</h2>
+<p>Modelos de aprendizado supervisionado aplicados no contexto de negociação de ativos financeiros têm sido propostos e estudados há mais de duas décadas. Embora tenham alcançado bons resultados em termos de rendimento financeiro e risco, essa abordagem padece de limitações importantes, tais como a necessidade de retreinamentos constantes sobretudo nas grandes oscilações do mercado, além da dificuldade em converter um modelo com boa taxa de acertos nas previsões em um sistema de negociação que gere altos rendimentos. Essas limitações podem ser contornadas com a utilização de técnicas de Aprendizado por Reforço. Nessa abordagem, um agente pode aprender a negociar ativos financeiros para maximizar o ganho total ou minimizar o risco através de sua própria interação com o mercado. Além disso, também é capaz de manter-se atualizado a cada modificação do ambiente dispensando a necessidade de retreinamento uma vez que o agente está sempre em aprendizado. Para obter evidências dessas propriedades, desenvolveu-se um agente de aprendizado por reforço utilizando uma modelagem tabular com o algoritmo SARSA e aplicou-se esse agente em um conjunto de ações com variados padrões de tendência com o objetivo de observar como esse agente muda sua estratégia de negociação em cada situação de tendência. Além disso, desenvolveu-se um agente de negociação baseado em aprendizado supervisionado utilizando uma rede neural LSTM para comparar o seu desempenho com o do agente de aprendizado por reforço proposto. Aplicou-se ambos os agentes em um conjunto de 10 ações da Bovespa no ano de 2018, comparando métricas de rendimento financeiro, risco e taxas de acertos. Os resultados experimentais apresentaram evidências não só das limitações do agente de aprendizado supervisionado proposto, como também das aludidas propriedades do agente de aprendizado por reforço em se adaptar às mudanças no mercado de modo a produzir ganhos financeiros com menores perdas financeiras acumuladas.</p>
+
+
+
+<h2>Introdução</h2>
+<p>
+O sucesso de uma estratégia de investimento no mercado de ações negociadas em bolsas de valores é determinado pela sequência de decisões tomadas pelo investidor. Por isso, os investidores estão sempre atentos às cotações de preços, notícias, cenário político e econômico com o objetivo de detectar padrões que os permitam tomar as melhores decisões em cada situação.
+Sabe-se que atualmente grande parte das negociações que ocorrem nas principais bolsas de valores do mundo são executadas por sistemas automatizados de negociação também chamados de robôs ou agentes de negociação.
+Esses sistemas utilizam técnicas de Inteligência Artificial para detectar padrões ocultos em tempo real a partir de dados de preços, volume, notícias e outras informações. Uma vez detectado um determinado padrão pelo agente, o sistema executa automaticamente a operação mais adequada para os objetivos do investimento naquele momento.
+Esses sistemas geralmente operam alta frequência e disputam por negócios que ofereçam ganhos muito pequenos. Porém, se essas oportunidades de negócios forem numerosas o suficiente eles podem acumular muitos ganhos. Uma vantagem desses sistemas é que eles podem detectar padrões e executar ordens em frações de segundo possibilitando ao investidor um melhor aproveitamento das oportunidades de negócios no mercado de bolsa de valores.
+Uma das abordagens em Inteligência Artificial utilizadas é o Aprendizado por Reforço. Nessa abordagem um agente é capaz de aprender a associar ações a situações através da sua própria interação com o ambiente de modo a maximizar uma medida de desempenho em uma determinada tarefa.
+Isto é semelhante a maneira como humanos aprendem várias tarefas durante a vida. Por exemplo, uma criança aprende a andar de bicicleta, jogar futebol ou andar de skate interagindo com esses objetos. É através da interação com esses objetos que uma criança aprende a relação entre uma ação tomada e a consequência da respectiva ação em cada situação. Desse modo, por tentativa e erro a criança adquire conhecimento e experiência e permanece sempre melhorando seu desempenho em cada tarefa.
+Sistemas que empregam aprendizado por reforço têm obtido sucesso em diversas aplicações tais como jogos RTS, roteamento de veículos autônomos, jogos de Atari, jogos de tabuleiro e até aceleração de descobrimento de medicamentos.
+No contexto de negociação de ações um sistema baseado em aprendizado por reforço é capaz de aprender através da sua própria interação com o mercado a associar a melhor decisão a cada estado de modo a otimizar uma medida de desempenho. Além disso, esse tipo de sistema possui uma importante característica adaptativa: o agente de aprendizado por reforço é capaz de modificar o que aprendeu anteriormente de forma dinâmica à medida que as condições do mercado se modificam.
+Essas propriedades sugerem que um sistema de negociação baseado em aprendizado por reforço pode ser uma alternativa competitiva em termos de rendimento financeiro e risco perante outros tipos de modelagens de sistemas de negociação baseados em modelos de aprendizado supervisionado ou indicadores de Análise Técnica, por exemplo.
+Portanto, pretende-se nesse trabalho de dissertação de mestrado conceber, propor, desenvolver e testar um agente de aprendizado por reforço para negociação de ações. Pretende-se ainda compará-lo com outro sistema baseado em aprendizado supervisionado. Para tanto, serão consideradas métricas de rendimento financeiro, risco e taxas de acertos.
+Ao final, pretende-se obter evidências experimentais das propriedades adaptativas de um sistema de aprendizado por reforço aplicado ao contexto de negociação de ações bem como evidências de sua superioridade em termos de rendimento financeiro e risco comparado a um sistema baseado em aprendizado supervisionado.
+</p>
+
+<h2>Objetivos</h2>
+<p>
+O objetivo geral do presente trabalho é propor, desenvolver e analisar em termos de viabilidade técnica e financeira um sistema de negociação de ações utilizando aprendizado por reforço.
+Objetivos Específicos
+Para alcançar o referido objetivo geral, propõe-se os seguintes objetivos específicos:
+Coletar dados históricos de ações da Bolsa de Valores de São Paulo (B3).
+Identificar padrões de tendência nas séries temporais consideradas.
+Implementar um agente de negociação utilizando um algoritmo de aprendizado por reforço.
+Treinar e simular o agente em dados históricos das ações.
+Analisar os resultados produzidos comparando com estratégias comuns e modelagens que empregam aprendizado supervisionado.
+</p>
+
+<h2>Contribuições</h2>
+<p>
+Espera-se ao final desse trabalho obter evidências experimentais que possam sugerir a viabilidade técnica e financeira do agente de aprendizado por reforço proposto. Além disso, outras contribuições importantes são:
+Comparação do sistema de aprendizado por reforço implementado com um agente de negociação baseado em aprendizado supervisionado (e.g., redes neurais LSTM).
+Análise do sistema implementado em diferentes condições de tendências de uma ação.
+Análise do sistema implementado em um contexto de instabilidade do mercado de ações.
+</p>
+
+</body>
+</html>

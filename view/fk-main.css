@@ -2,19 +2,16 @@
 * {
   box-sizing: border-box;
 }
-
 #janela {
   height: 555px;
+  text-align: justify;
 }
-
-
 /*///////////////////////////////////////////////////////////////////////////////////////*/
 .row::after {
   content: "";
   clear: both;
   display: table;
 }
-
 [class*="col-"] {
   float: left;
   padding: 15px;
@@ -44,6 +41,14 @@ html {
   font-size: 12px;
   padding: 15px;
 }
+.footer-fix {
+  background-color: #333;
+  color: #ffffff;
+  text-align: center;
+  font-size: 12px;
+  padding: 15px;
+}
+
 /*///////////////////////////////////////////////////////////////////////////////////////*/
 .lincagen ul {
   list-style-type: none;
@@ -103,10 +108,10 @@ html {
 /*||||||||||||| AMBIENTE RESPONCIVO                      ||||||||||||||||||||||||||||||||*/
 /*///////////////////////////////////////////////////////////////////////////////////////*/
 /* For mobile phones: */
-/*[class*="col-"] {
+[class*="col-"] {
   width: 100%;
 }
-*/
+
 @media only screen and (min-width: 600px) {
   /* For tablets: */
   .col-s-1 {width: 8.33%;}
