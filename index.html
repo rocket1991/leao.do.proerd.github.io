@@ -16,7 +16,13 @@
   
       xmlhttp.onload = function() {
         
-        document.getElementById("demo").innerHTML = this.responseText;
+        
+
+          let obj = JSON.parse(this.responseText);
+          document.getElementById("demo").innerHTML = obj.produto;
+
+            
+          
       }
  
     </script>
