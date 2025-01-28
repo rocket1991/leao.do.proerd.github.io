@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DVD Screensaver</title>
+    <meta name="description" content="Will the bouncing DVD logo hit the corner? Upload your own logos too!" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#007aff" />
+    <meta name="msapplication-TileColor" content="#2b5797" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <meta property="og:title" content="Bouncing DVD logo screensaver">
+    <meta property="og:site_name" content="DVD Screensaver">
+    <meta property="og:url" content="https://dvd-screen.netlify.app" />
+    <meta property="og:description" content="Will it hit the corner? 😱">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://i.imgur.com/SdmiPPF.png">
+
+
+    <script src="script.js" defer></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-259151856-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-259151856-1');
+    </script>
+
+</head>
+<style>
+    * {
+        margin: 0;
+    }
+
+    body {
+        font-family: "Courier New", Courier, monospace;
+        background: black;
+        color: white;
+        overflow: hidden;
+    }
+
+    a {
+        text-decoration: none;
+        color: orange;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    button {
+        border: 1px solid #ccc;
+        display: inline-block;
+        padding: 6px 12px;
+        background: none;
+        color: white;
+        font-family: 'Courier New', Courier, monospace;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    #logo-container {
+        position: relative;
+        user-select: none;
+    }
+
+    #logo {
+        position: absolute;
+        z-index: 0;
+    }
+
+    #pause-notification {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+
+    .logo-upload-label {
+        border: 1px solid #ccc;
+        display: inline-block;
+        padding: 6px 12px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .logo-upload-label:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    #settings {
+        display: flex;
+        flex-direction: column;
+        max-width: 15rem;
+        padding: 1rem;
+        gap: 1rem;
+        position: relative;
+        z-index: 1;
+        background: rgba(0, 0, 0, 0.3);
+
+        visibility: visible;
+
+        transition: visibility 0.5s ease;
+    }
+
+    .setting-control {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+</style>
+
+<body>
+    <div id="logo-container">
+        <img id="logo" src="dvd_logo2.png" alt="dvd logo" width="20%" />
+    </div>
+    <div id="pause-notification">Click anywhere to resume</div>
+
+    <aside id="settings">
+        <label for="logo-upload" class="logo-upload-label">
+            Upload logos
+        </label>
+        <input id="logo-upload" type="file" onchange="logoUpload()" accept="image/png, image/jpeg, .svg" multiple />
+
+        <div class="setting-control">
+            <label for="logo-speed">Speed</label>
+            <input id="logo-speed" type="range" min="1" max="10" step="0.5" oninput="speedChange()"
+                onchange="speedChangeEnd()" />
+        </div>
+
+        <div class="setting-control">
+            <label for="logo-speed">Background</label>
+            <input id="bg-color-input" type="color" oninput="bgColorChange()" onchange="bgColorChangeEnd()" />
+        </div>
+
+        <button onclick="enterFullscreen()">Fullscreen</button>
+
+        <div>
+            <span>© 2023 </span>
+            <a href="https://github.com/mabenj/dvd-screensaver" target="_blank" onclick="githubClick()">
+                mabenj
+            </a>
+        </div>
+    </aside>
+</body>
+
+</html>
